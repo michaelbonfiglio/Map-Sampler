@@ -2,6 +2,7 @@
 'use strict';
 // generated on 2015-09-18 using generator-gulp-webapp 0.3.0
 var gulp = require('gulp');
+var deploy = require('gulp-gh-pages');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -118,10 +119,18 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () {
+gulp.task('build', [ 'html', 'images', 'fonts', 'extras'], function () {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], function () {
   gulp.start('build');
+});
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./dist/**/*")
+    .pipe(deploy())
 });
