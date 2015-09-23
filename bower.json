@@ -1,0 +1,11 @@
+{
+  "name": "map-sampler",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.1",
+    "jquery-ui": "~1.11.4",
+    "leaflet": "~0.7.5",
+    "mapbox.js": "~2.2.1",
+    "modernizr": "~2.8.1"
+  }
+}
