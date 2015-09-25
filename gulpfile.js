@@ -131,6 +131,6 @@ gulp.task('default', ['clean'], function () {
  * Push build to gh-pages
  */
 gulp.task('deploy', function () {
-  return gulp.src("./dist/**/*")
+  return gulp.src('./dist/**/*')
     .pipe(deploy())
 });
