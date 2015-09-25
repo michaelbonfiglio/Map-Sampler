@@ -5,6 +5,10 @@ L.mapbox.accessToken = 'pk.eyJ1IjoibWljaGFlbGJvbmZpZ2xpbyIsImEiOiJjVnNWekRzIn0.h
 
 var sampMap = 'michaelbonfiglio.k4blgij8';
 
+$('#sampmapID').val(sampMap);
+
+
+
 // var map0 = L.mapbox.map('map0', sampMap);
 // var map1 = L.mapbox.map('map1', sampMap);
 // var map2 = L.mapbox.map('map2', sampMap);
@@ -64,6 +68,7 @@ var sampObj = [];
 
 $('#button1').click(function() {
 	event.preventDefault();
+
 	for (var k = 0; k < mapCount; k++) {
 		sampObj[k] = {};
 		sampObj[k].sampLat = randomCoordinate(latMin, latMax);
@@ -88,5 +93,20 @@ $( "#slider-range" ).slider({
 	}
 });
 $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + " - " + $( "#slider-range" ).slider( "values", 1 ) );
+
+$('#btn-sampmapID').click(function() {
+	event.preventDefault();
+	inactiveSampMap = sampMap;
+	sampMap = $('#sampmapID').val();
+	for (var i = 0; i < mapCount; ++i) {
+		sampleMaps[i].removeLayer(L.mapbox.tileLayer(inactiveSampMap));
+		sampleMaps[i].addLayer(L.mapbox.tileLayer(sampMap));
+	}
+	
+	// for (var i = 0; i < mapCount; ++i) {
+		
+	// }
+	
+});
 
 
